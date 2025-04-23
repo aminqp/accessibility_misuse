@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header Element Accessibility Misuse Examples</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .example {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+      .bad {
+        background-color: #ffeeee;
+      }
+      .good {
+        background-color: #eeffee;
+      }
+      .example-title {
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 10px;
+      }
+      header,
+      section,
+      article,
+      footer {
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px dashed #999;
+      }
+      .highlight {
+        background-color: #ffffcc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Header Element Accessibility Misuse Examples</h1>
+
+    <section class="example bad">
+      <div class="example-title">Issue 1: Header with no heading element</div>
+      <header>
+        <p>Welcome to our website</p>
+        <p>This is important information in the header</p>
+      </header>
+      <p>
+        Problem: This header lacks a heading element (h1-h6), which makes it
+        difficult for screen reader users to identify the purpose of this
+        section.
+      </p>
+    </section>
+
+    <section class="example bad">
+      <div class="example-title">
+        Issue 2: Multiple header elements in one section
+      </div>
+      <article>
+        <header>
+          <h2>First Header</h2>
+        </header>
+        <p>Some content here...</p>
+        <header>
+          <h3>Another Header in Same Section</h3>
+        </header>
+        <p>More content...</p>
+      </article>
+      <p>
+        Problem: Multiple header elements in the same section create confusion
+        about which one is the primary header, affecting the logical structure.
+      </p>
+    </section>
+
+    <section class="example bad">
+      <div class="example-title">
+        Issue 3: Using header for visual styling only
+      </div>
+      <header style="background-color: #333; color: white; padding: 20px">
+        <p>This content just needs to stand out visually</p>
+      </header>
+      <p>
+        Problem: Using the header element purely for visual styling rather than
+        semantic structure misuses the element's purpose.
+      </p>
+    </section>
+
+    <section class="example bad">
+      <div class="example-title">Issue 4: Nested header elements</div>
+      <header>
+        <h2>Main Header</h2>
+        <header>
+          <h3>Sub Header</h3>
+        </header>
+      </header>
+      <p>
+        Problem: Nesting header elements is inappropriate and confuses assistive
+        technologies about the document structure.
+      </p>
+    </section>
+
+    <section class="example bad">
+      <div class="example-title">
+        Issue 5: Header with excessive, non-header content
+      </div>
+      <header>
+        <h2>Website Title</h2>
+        <p>Welcome to our website where we discuss many interesting topics.</p>
+        <p>Founded in 2010, our organization has been dedicated to...</p>
+        <p>Our mission is to provide the best information about...</p>
+        <p>Contact us at example@example.com</p>
+        <img src="logo.png" alt="Company Logo" />
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <form>
+            <input type="text" placeholder="Search..." />
+            <button>Search</button>
+          </form>
+        </div>
+      </header>
+      <p>
+        Problem: Overloading the header with too much content that should be
+        elsewhere in the document structure makes it harder for users to find
+        the main page content.
+      </p>
+    </section>
+
+    <section class="example bad">
+      <div class="example-title">Issue 6: Using header for footer content</div>
+      <article>
+        <h2>Article Title</h2>
+        <p>Article content goes here...</p>
+        <header>
+          <p>Posted on: January 1, 2023 | Author: John Doe</p>
+          <p>Categories: Web Design, Accessibility</p>
+        </header>
+      </article>
+      <p>
+        Problem: Using header for metadata or footer information is semantically
+        incorrect. This information should be in a footer element.
+      </p>
+    </section>
+
+    <section class="example bad">
+      <div class="example-title">
+        Issue 7: Using header without proper landmark role association
+      </div>
+      <div class="highlight">
+        <header role="banner">
+          <h1>Main Website Title</h1>
+        </header>
+      </div>
+      <section>
+        <header>
+          <h2>Section Title</h2>
+        </header>
+        <p>Content...</p>
+      </section>
+      <div class="highlight">
+        <header role="banner">
+          <h2>Another Main Header</h2>
+        </header>
+      </div>
+      <p>
+        Problem: Multiple headers with the same landmark role (banner) create
+        confusion for screen reader users. There should typically be only one
+        banner per page.
+      </p>
+    </section>
+
+    <section class="example good">
+      <div class="example-title">Correct Usage Example</div>
+      <header>
+        <h1>Website Name</h1>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <article>
+          <header>
+            <h2>Article Title</h2>
+            <p>Published: January 1, 2023</p>
+          </header>
+          <p>Article content goes here...</p>
+          <footer>
+            <p>Author: Jane Smith</p>
+          </footer>
+        </article>
+      </main>
+
+      <footer>
+        <p>&copy; 2023 Example Company</p>
+      </footer>
+
+      <p>This demonstrates proper usage where:</p>
+      <ul>
+        <li>
+          The main page header contains the site title and primary navigation
+        </li>
+        <li>
+          Article sections have their own headers with appropriate headings
+        </li>
+        <li>Each header has a clear purpose and contains a heading element</li>
+        <li>The document follows a logical, semantic structure</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Accessibility Best Practices for the Header Element</h2>
+      <ul>
+        <li>Always include a heading element (h1-h6) within a header</li>
+        <li>
+          Use header elements to introduce content sections, not for styling
+        </li>
+        <li>Avoid nesting header elements</li>
+        <li>Don't use multiple headers for the same section</li>
+        <li>Keep header content relevant to its section</li>
+        <li>Use the correct semantic elements (header vs footer)</li>
+        <li>Ensure only one header has the "banner" role per page</li>
+      </ul>
+    </section>
+  </body>
+</html>
