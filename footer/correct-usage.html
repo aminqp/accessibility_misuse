@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correct Usage: Proper Footer Implementation</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Footer Examples</a>
+    </div>
+
+    <h1>Correct Usage: Proper Footer Implementation</h1>
+
+    <section class="example good">
+        <div class="example-title">Correct Usage Example: Document-level Footer</div>
+
+        <div class="demo-page">
+            <header>
+                <h1>Company Website</h1>
+                <nav aria-label="Main navigation">
+                    <ul class="menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main id="main-content">
+                <h2>Main Content Heading</h2>
+                <p>This is the main content area of the page...</p>
+            </main>
+
+            <footer>
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h2>About Us</h2>
+                        <p>Brief company description and mission statement goes here.</p>
+                    </div>
+
+                    <div class="footer-section">
+                        <h2>Contact Information</h2>
+                        <address>
+                            123 Main Street<br>
+                            Anytown, CA 12345<br>
+                            <a href="tel:+15551234567">555-123-4567</a><br>
+                            <a href="mailto:info@example.com">info@example.com</a>
+                        </address>
+                    </div>
+
+                    <div class="footer-section">
+                        <h2>Quick Links</h2>
+                        <nav aria-label="Footer navigation">
+                            <ul>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms of Service</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Sitemap</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <p>&copy; 2023 Company Name. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+
+        <h3>Why this is good:</h3>
+        <ul>
+            <li>The footer contains appropriate supplementary information (company info, contact details, secondary navigation)</li>
+            <li>Each section has a clear heading (h2) for easy navigation</li>
+            <li>The contact information uses the address element properly</li>
+            <li>The navigation links are wrapped in a nav element with an appropriate aria-label</li>
+            <li>The footer is a direct descendant of the body element, giving it the contentinfo landmark role</li>
+            <li>The content is well-organized and structured with appropriate semantic elements</li>
+        </ul>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Usage Example: Sectional Footer</div>
+
+        <div class="demo-page">
+            <article>
+                <header>
+                    <h2>Article Title</h2>
+                </header>
+
+                <p>Article content goes here. This is the main body of the article with all the primary information.</p>
+
+                <footer>
+                    <p>Author: Jane Smith</p>
+                    <p>Published: <time datetime="2023-01-15">January 15, 2023</time></p>
+                    <p>Categories: <a href="#">Accessibility</a>, <a href="#">HTML</a>, <a href="#">Best Practices</a></p>
+                </footer>
+            </article>
+        </div>
+
+        <h3>Why sectional footers are good:</h3>
+        <ul>
+            <li>The footer is properly placed within the article element it relates to</li>
+            <li>It contains metadata about the article (author, publication date, categories)</li>
+            <li>The footer uses the time element with a machine-readable datetime attribute</li>
+            <li>Since it's within an article, it doesn't get the contentinfo landmark role, avoiding confusion with the main page footer</li>
+            <li>The content is clearly related to the article it appears in, maintaining proper semantic relationships</li>
+        </ul>
+    </section>
+</body>
+</html>

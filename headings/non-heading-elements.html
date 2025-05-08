@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Using Non-Heading Elements for Headings</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Heading Examples</a>
+    </div>
+
+    <h1>Issue: Using Non-Heading Elements for Headings</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 3: Using non-heading elements for headings</div>
+        <div class="visual-heading" style="font-size: 24px; font-weight: bold; color: #333;">This is visually a heading but not semantically</div>
+        <p>Problem: Screen readers won't recognize this as a heading, so users will miss this important navigation point. When using divs or paragraphs styled to look like headings, the semantic meaning is lost, making the content less accessible to assistive technology users.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <h2>This is both visually and semantically a heading</h2>
+        <p>Solution: Use the appropriate heading element (h1-h6) for all content that functions as a heading in the document structure. This ensures that screen readers can identify and announce the content as a heading, making it easier for users to navigate the document.</p>
+        <p>If you need to customize the appearance of headings, use CSS to style the semantic heading elements rather than using non-heading elements with visual styling:</p>
+        <div class="code-example">
+            <pre>
+h2 {
+    font-size: 24px;
+    color: #333;
+    /* Other custom styles */
+}
+            </pre>
+        </div>
+    </section>
+
+
+</body>
+</html>

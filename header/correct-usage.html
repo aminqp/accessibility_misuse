@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correct Usage: Proper Header Implementation</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Header Examples</a>
+    </div>
+
+    <h1>Correct Usage: Proper Header Implementation</h1>
+
+    <section class="example good">
+        <div class="example-title">Correct Usage Example: Page-Level Header</div>
+
+        <div class="demo-page">
+            <a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; top: 0; width: 1px; height: 1px; overflow: hidden; z-index: 999;">Skip to main content</a>
+
+            <header>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1>Company Name</h1>
+                        <p>Tagline or brief description</p>
+                    </div>
+                    <img src="#" alt="Company Logo" style="width: 80px; height: 80px; background: #ccc;">
+                </div>
+
+                <nav aria-label="Main navigation">
+                    <ul class="menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main id="main-content">
+                <h2>Main Content Heading</h2>
+                <p>This is the main content area of the page...</p>
+
+                <article>
+                    <header>
+                        <h3>Article Title</h3>
+                        <p>Published: January 1, 2023</p>
+                    </header>
+                    <p>Article content goes here...</p>
+                    <footer>
+                        <p>Author: Jane Smith</p>
+                    </footer>
+                </article>
+            </main>
+
+            <footer>
+                <p>&copy; 2023 Company Name. All rights reserved.</p>
+            </footer>
+        </div>
+
+        <h3>Why this is good:</h3>
+        <ul>
+            <li>The page includes a skip link that allows keyboard users to bypass the header</li>
+            <li>The page header contains a clear h1 title identifying the site</li>
+            <li>The header includes only appropriate header content (logo, title, main navigation)</li>
+            <li>The navigation within the header has a proper aria-label</li>
+            <li>The article has its own semantic header for article-specific introductory content</li>
+            <li>Each header has at least one heading (h1-h6) element</li>
+            <li>The document follows a logical structure with clear separation between header, main content, and footer</li>
+        </ul>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Usage Example: Section-Level Headers</div>
+
+        <div class="demo-page">
+            <header>
+                <h2>Product Categories</h2>
+                <p>Browse our selection of high-quality products across multiple categories.</p>
+            </header>
+
+            <section>
+                <header>
+                    <h3>Electronics</h3>
+                    <p>Latest gadgets and technology products.</p>
+                </header>
+                <ul>
+                    <li>Smartphones</li>
+                    <li>Laptops</li>
+                    <li>Tablets</li>
+                </ul>
+            </section>
+
+            <section>
+                <header>
+                    <h3>Home & Kitchen</h3>
+                    <p>Everything you need for your home.</p>
+                </header>
+                <ul>
+                    <li>Appliances</li>
+                    <li>Furniture</li>
+                    <li>Décor</li>
+                </ul>
+            </section>
+        </div>
+
+        <h3>Why section-level headers are good:</h3>
+        <ul>
+            <li>Each section has its own header with appropriate heading levels</li>
+            <li>Headers contain descriptive introductory content for their sections</li>
+            <li>The heading hierarchy is maintained (h2 for the main section, h3 for subsections)</li>
+            <li>Each header clearly relates to its section and provides context</li>
+            <li>The headers help screen reader users understand the structure of the content</li>
+        </ul>
+    </section>
+</body>
+</html>

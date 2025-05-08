@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Main Element Inside Another Landmark Element</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Main Examples</a>
+    </div>
+
+    <h1>Issue: Main Element Inside Another Landmark Element</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 2: Main element inside another landmark element</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <article>
+            <h2>Article Title</h2>
+            <main>
+                <p>This is the main content nested inside an article.</p>
+            </main>
+        </article>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Problem: The <code>&lt;main&gt;</code> element should not be a descendant of an <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;header&gt;</code>, or <code>&lt;nav&gt;</code> element. It should represent the main content of the body, not a subsection.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <article>
+                <h2>Article Title</h2>
+                <p>This is the main content now properly structured with the article inside main.</p>
+            </article>
+        </main>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Solution: Place the <code>&lt;main&gt;</code> element as a direct child of the <code>&lt;body&gt;</code> element (or a wrapper div), and nest other content elements like <code>&lt;article&gt;</code> inside the <code>&lt;main&gt;</code> element.</p>
+    </section>
+
+    <section>
+        <h2>Landmark Element Hierarchy</h2>
+        <p>The HTML5 specification defines a specific hierarchy for landmark elements to ensure consistent document structure and accessibility:</p>
+
+        <h3>Proper Nesting of Landmarks</h3>
+        <ul>
+            <li><code>&lt;body&gt;</code>
+                <ul>
+                    <li><code>&lt;header&gt;</code></li>
+                    <li><code>&lt;nav&gt;</code></li>
+                    <li><code>&lt;main&gt;</code>
+                        <ul>
+                            <li><code>&lt;article&gt;</code></li>
+                            <li><code>&lt;section&gt;</code></li>
+                        </ul>
+                    </li>
+                    <li><code>&lt;aside&gt;</code></li>
+                    <li><code>&lt;footer&gt;</code></li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Technical Reasons for Proper Structure</h3>
+        <p>According to the HTML5 specification, the <code>&lt;main&gt;</code> element has content restrictions. It must not be a descendant of an <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;header&gt;</code>, or <code>&lt;nav&gt;</code> element. This is because:</p>
+        <ul>
+            <li>The <code>&lt;main&gt;</code> element is intended to contain the primary content of the page</li>
+            <li>Other landmark elements are intended for specific types of content (navigation, complementary, etc.)</li>
+            <li>Nesting main within other landmarks creates conflicting semantics about what constitutes the "main" content</li>
+            <li>Screen reader users navigate by landmarks, and proper hierarchy is essential for effective navigation</li>
+        </ul>
+    </section>
+
+
+</body>
+</html>

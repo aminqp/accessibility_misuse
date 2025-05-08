@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Header with No Heading Element</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Header Examples</a>
+    </div>
+
+    <h1>Issue: Header with No Heading Element</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 1: Header with no heading element</div>
+        <header>
+            <p>Welcome to our website</p>
+            <p>This is important information in the header</p>
+        </header>
+        <p>Problem: This header lacks a heading element (h1-h6), which makes it difficult for screen reader users to identify the purpose of this section. Header elements should typically contain at least one heading that describes their content and purpose.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Name</h1>
+            <p>Welcome to our website</p>
+        </header>
+        <p>Solution: Include a proper heading element (h1-h6) in your header to clearly identify its purpose. This helps screen reader users understand the context and navigate the page more effectively. For site-wide headers, an h1 is typically appropriate for the main site title.</p>
+    </section>
+
+
+</body>
+</html>

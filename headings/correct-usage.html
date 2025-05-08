@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correct Usage: Proper Heading Hierarchy</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Heading Examples</a>
+    </div>
+
+    <h1>Correct Usage: Proper Heading Hierarchy</h1>
+
+    <section class="example good">
+        <div class="example-title">Correct Usage Example: Document with Proper Heading Structure</div>
+
+        <div class="demo-page">
+            <h1>Company Website</h1>
+            <p>Welcome to our company website. We provide excellent services and products.</p>
+
+            <h2>About Us</h2>
+            <p>Learn about our company history and mission.</p>
+
+            <h3>Our History</h3>
+            <p>Founded in 2005, we have been serving customers for over 15 years.</p>
+
+            <h3>Our Mission</h3>
+            <p>We aim to provide the highest quality products with exceptional customer service.</p>
+
+            <h2>Products</h2>
+            <p>Explore our range of products designed to meet your needs.</p>
+
+            <h3>Product Category A</h3>
+            <p>Information about our Category A products.</p>
+
+            <h4>Featured Product</h4>
+            <p>Details about our most popular product in Category A.</p>
+
+            <h3>Product Category B</h3>
+            <p>Information about our Category B products.</p>
+
+            <h2>Contact Us</h2>
+            <p>Get in touch with our team for more information.</p>
+        </div>
+
+        <h3>Why this is good:</h3>
+        <ul>
+            <li>The page uses a single h1 element for the main page title</li>
+            <li>Major sections use h2 headings</li>
+            <li>Subsections use h3 headings</li>
+            <li>Further nested content uses h4 headings</li>
+            <li>The heading hierarchy creates a clear, logical document outline</li>
+            <li>No heading levels are skipped</li>
+            <li>Each heading clearly describes its associated content</li>
+        </ul>
+
+        <h3>Document Outline View:</h3>
+        <pre style="background: #f5f5f5; padding: 15px; border-left: 3px solid #0066cc;">
+├── h1: Company Website
+│   ├── h2: About Us
+│   │   ├── h3: Our History
+│   │   └── h3: Our Mission
+│   ├── h2: Products
+│   │   ├── h3: Product Category A
+│   │   │   └── h4: Featured Product
+│   │   └── h3: Product Category B
+│   └── h2: Contact Us
+        </pre>
+
+        <p>This outline structure provides clear navigation cues for screen reader users and helps all users understand the content organization.</p>
+    </section>
+
+
+</body>
+</html>

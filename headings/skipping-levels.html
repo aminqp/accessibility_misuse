@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Skipping Heading Levels</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Heading Examples</a>
+    </div>
+
+    <h1>Issue: Skipping Heading Levels</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 1: Skipping heading levels</div>
+        <h1>Website Title</h1>
+        <!-- Skipping h2 and going straight to h3 -->
+        <h3>Section Title</h3>
+        <p>Problem: This is bad practice because it skips the h2 level, breaking the hierarchical structure that screen reader users rely on for navigation. Screen reader users may be confused when the document structure jumps from h1 to h3 without any h2 headings in between.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <h1>Website Title</h1>
+        <h2>Main Section</h2>
+        <h3>Subsection</h3>
+        <p>Solution: Use headings in their proper hierarchical order without skipping levels. This creates a clear and logical document structure that screen reader users can navigate easily. Headings should flow from h1 to h2 to h3 and so on.</p>
+    </section>
+
+
+</body>
+</html>

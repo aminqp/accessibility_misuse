@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Multiple H1 Tags</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Heading Examples</a>
+    </div>
+
+    <h1>Issue: Multiple H1 Tags</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 5: Multiple h1 tags</div>
+        <h1>First Main Title</h1>
+        <p>Some content here...</p>
+        <h1>Second Main Title</h1>
+        <p>Problem: Having multiple h1 tags on a single page can confuse screen reader users about the main topic of the page. The h1 heading should represent the overall purpose or topic of the page, and multiple h1 elements dilute this meaning and create an unclear document structure.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <h1>Main Page Title</h1>
+        <p>Introduction content here...</p>
+        <h2>First Major Section</h2>
+        <p>Content for the first section...</p>
+        <h2>Second Major Section</h2>
+        <p>Solution: Use only one h1 element per page that clearly identifies the page's main topic or purpose. Use h2 elements for major sections of content, and continue with h3-h6 as needed for nested subsections. This creates a clear hierarchy that helps all users understand the content structure.</p>
+    </section>
+
+
+</body>
+</html>

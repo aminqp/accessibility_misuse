@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Best Practices for the Footer Element</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Footer Examples</a>
+    </div>
+
+    <h1>Accessibility Best Practices for the Footer Element</h1>
+
+    <section class="example good">
+        <div class="example-title">Footer Accessibility Guidelines</div>
+
+        <h2>Key Best Practices for Accessible Footers</h2>
+
+        <h3>1. Use Semantic Structure</h3>
+        <p>Use the proper footer element for content that should be identified as footer information:</p>
+        <pre><code>&lt;footer&gt;
+    &lt;p&gt;&copy; 2023 Company Name&lt;/p&gt;
+    &lt;!-- Other footer content --&gt;
+&lt;/footer&gt;</code></pre>
+
+        <h3>2. Include Proper Headings</h3>
+        <p>For complex footers with multiple sections, use appropriate heading elements to structure the content:</p>
+        <pre><code>&lt;footer&gt;
+    &lt;div class="footer-section"&gt;
+        &lt;h2&gt;Contact Us&lt;/h2&gt;
+        &lt;address&gt;
+            &lt;a href="mailto:info@example.com"&gt;info@example.com&lt;/a&gt;
+        &lt;/address&gt;
+    &lt;/div&gt;
+    &lt;div class="footer-section"&gt;
+        &lt;h2&gt;Quick Links&lt;/h2&gt;
+        &lt;nav aria-label="Footer navigation"&gt;
+            &lt;!-- Navigation links --&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+
+        <h3>3. Ensure Proper Landmark Role</h3>
+        <p>Document-level footers have the contentinfo landmark role automatically. Only use one footer with this role per page:</p>
+        <pre><code>&lt;!-- Main document footer (automatically gets contentinfo role) --&gt;
+&lt;footer&gt;
+    &lt;p&gt;&copy; 2023 Company Name&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;!-- Section footer (doesn't get contentinfo role) --&gt;
+&lt;article&gt;
+    &lt;h2&gt;Article Title&lt;/h2&gt;
+    &lt;p&gt;Content...&lt;/p&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Author: John Smith&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+
+        <h3>4. Use Address Element Appropriately</h3>
+        <p>Use the address element specifically for contact information in footers:</p>
+        <pre><code>&lt;footer&gt;
+    &lt;address&gt;
+        123 Main Street&lt;br&gt;
+        Anytown, CA 12345&lt;br&gt;
+        &lt;a href="tel:+15551234567"&gt;555-123-4567&lt;/a&gt;&lt;br&gt;
+        &lt;a href="mailto:info@example.com"&gt;info@example.com&lt;/a&gt;
+    &lt;/address&gt;
+&lt;/footer&gt;</code></pre>
+
+        <h3>5. Properly Label Navigation</h3>
+        <p>Add descriptive labels to navigation elements within footers:</p>
+        <pre><code>&lt;footer&gt;
+    &lt;nav aria-label="Footer navigation"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Terms of Service&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/footer&gt;</code></pre>
+
+        <h3>6. Place Footers in Proper Context</h3>
+        <p>Ensure the footer is nested within the appropriate sectioning element or at the document level:</p>
+        <pre><code>&lt;!-- Document-level footer --&gt;
+&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;main&gt;...&lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+
+&lt;!-- Section-level footer --&gt;
+&lt;section&gt;
+    &lt;h2&gt;Section title&lt;/h2&gt;
+    &lt;p&gt;Content...&lt;/p&gt;
+    &lt;footer&gt;Section-specific footer content&lt;/footer&gt;
+&lt;/section&gt;</code></pre>
+
+        <h3>7. Avoid Overriding Native Semantics</h3>
+        <p>Don't override the native role of footer elements with contradictory ARIA roles:</p>
+        <pre><code>&lt;!-- DON'T DO THIS --&gt;
+&lt;footer role="main"&gt;
+    &lt;p&gt;&copy; 2023 Company Name&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;!-- CORRECT USAGE --&gt;
+&lt;footer&gt;
+    &lt;p&gt;&copy; 2023 Company Name&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+        <h3>8. Ensure Adequate Color Contrast</h3>
+        <p>Maintain sufficient color contrast for all text in footers, which are often styled with background colors:</p>
+        <pre><code>/* Ensure text is readable against the background */
+footer {
+    background-color: #333;
+    color: #fff; /* Light text on dark background */
+}
+
+/* Make sure links are also visible */
+footer a {
+    color: #9cf; /* Light blue is more visible on dark backgrounds */
+}</code></pre>
+    </section>
+
+    <section>
+        <h2>Complete Footer Accessibility Checklist</h2>
+        <ul>
+            <li>Use the <code>&lt;footer&gt;</code> element for supplementary information about its nearest sectioning ancestor</li>
+            <li>Ensure document-level footers contain information like copyright, contact info, or secondary navigation</li>
+            <li>Use proper headings (h2-h6) for distinct sections within complex footers</li>
+            <li>Avoid using the <code>&lt;footer&gt;</code> element for main content</li>
+            <li>Place footers inside sectioning elements (article, section) when the footer relates specifically to that content</li>
+            <li>Do not override the native semantics of footer with inappropriate ARIA roles</li>
+            <li>Ensure only one footer at the document level has the contentinfo role (this is implicit for document-level footers)</li>
+            <li>Don't use empty footers just for visual spacing</li>
+            <li>Use the <code>&lt;address&gt;</code> element appropriately within footers for contact information</li>
+            <li>Clearly label navigation sections within footers using aria-label</li>
+            <li>Structure footer navigation with proper list markup (<code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code>)</li>
+            <li>Ensure all text in footers meets WCAG contrast requirements (4.5:1 for normal text, 3:1 for large text)</li>
+            <li>Make sure footer links are distinguishable (underlined or with sufficient contrast from surrounding text)</li>
+            <li>Ensure text is resizable without loss of functionality</li>
+            <li>Test footer navigation with keyboard-only navigation</li>
+            <li>Validate that screen readers correctly announce footer content</li>
+        </ul>
+    </section>
+</body>
+</html>

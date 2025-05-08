@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Missing Heading in a Complex Footer</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Footer Examples</a>
+    </div>
+
+    <h1>Issue: Missing Heading in a Complex Footer</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 4: Missing heading in a complex footer</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <footer>
+            <div>
+                <p>About Us</p>
+                <p>Our company is dedicated to providing the best service...</p>
+            </div>
+            <div>
+                <p>Contact Information</p>
+                <p>Phone: 123-456-7890</p>
+                <p>Email: info@example.com</p>
+            </div>
+            <div>
+                <p>Quick Links</p>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <p>&copy; 2023 Company Name</p>
+        </footer>
+        <p>Problem: Complex footers with multiple sections should use proper headings (h2-h6) for each section. Using paragraph tags for section titles makes it difficult for screen reader users to navigate the footer sections.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <footer>
+            <div>
+                <h2>About Us</h2>
+                <p>Our company is dedicated to providing the best service...</p>
+            </div>
+            <div>
+                <h2>Contact Information</h2>
+                <p>Phone: 123-456-7890</p>
+                <p>Email: info@example.com</p>
+            </div>
+            <div>
+                <h2>Quick Links</h2>
+                <nav aria-label="Footer navigation">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <p>&copy; 2023 Company Name</p>
+        </footer>
+        <p>Solution: Use proper heading elements (h2-h6) for section titles within complex footers to provide clear structure and navigation cues for screen reader users. Also, use the nav element for groups of navigation links with an appropriate aria-label.</p>
+    </section>
+</body>
+</html>

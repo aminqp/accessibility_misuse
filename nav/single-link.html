@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Nav With Only a Single Link</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Nav Examples</a>
+    </div>
+
+    <h1>Issue: Nav With Only a Single Link</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 4: Nav with only a single link</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <nav>
+            <a href="#">Back to Top</a>
+        </nav>
+        <p>Problem: Using the nav element for a single link that doesn't represent a significant navigation section is unnecessary and can confuse screen reader users who expect nav elements to contain a collection of navigation links.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <div class="back-to-top">
+            <a href="#">Back to Top</a>
+        </div>
+        <p>Solution: Use a regular div with a descriptive class for single utility links like "Back to Top" that don't constitute a major navigation section. Reserve the nav element for collections of links that represent significant navigation areas of your website.</p>
+    </section>
+</body>
+</html>

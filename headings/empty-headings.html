@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Empty Heading Tags</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Heading Examples</a>
+    </div>
+
+    <h1>Issue: Empty Heading Tags</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 7: Empty heading tags</div>
+        <h2></h2>
+        <p>Content after an empty heading...</p>
+        <p>Problem: Empty headings provide no information to screen reader users but are still announced as headings. This creates confusion and a poor user experience as screen readers will announce "heading level 2" without any content, leaving users to wonder what the section is about.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <h2>Section Title</h2>
+        <p>Content with a proper heading...</p>
+        <p>Solution: Ensure all heading elements contain descriptive text that clearly identifies the content of the section they introduce. If a visual separator is needed without semantic heading meaning, use alternative elements like:</p>
+        <ul>
+            <li>A styled hr element for a divider</li>
+            <li>A div with a border for visual separation</li>
+            <li>Margin or padding to create space</li>
+        </ul>
+    </section>
+
+
+</body>
+</html>

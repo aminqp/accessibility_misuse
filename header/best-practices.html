@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Best Practices for the Header Element</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Header Examples</a>
+    </div>
+
+    <h1>Accessibility Best Practices for the Header Element</h1>
+
+    <section class="example good">
+        <div class="example-title">Header Accessibility Guidelines</div>
+
+        <h2>Key Best Practices for Accessible Headers</h2>
+
+        <h3>1. Include a Heading Element</h3>
+        <p>Always include at least one heading element (h1-h6) within a header to provide context and structure:</p>
+        <pre><code>&lt;header&gt;
+    &lt;h1&gt;Website Title&lt;/h1&gt;
+    &lt;!-- Other header content --&gt;
+&lt;/header&gt;</code></pre>
+
+        <h3>2. Provide Skip Links</h3>
+        <p>Include a skip link at the beginning of the page to allow keyboard users to bypass repetitive header content:</p>
+        <pre><code>&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+&lt;header&gt;
+    &lt;!-- Header content --&gt;
+&lt;/header&gt;
+&lt;main id="main-content"&gt;
+    &lt;!-- Main content --&gt;
+&lt;/main&gt;</code></pre>
+        <p>With CSS to make the skip link visible when focused:</p>
+        <pre><code>.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+.skip-link:focus {
+    top: 0;
+}</code></pre>
+
+        <h3>3. Use Appropriate Landmark Roles</h3>
+        <p>The main page header typically gets the "banner" role automatically (when it's a direct child of the body element). For other headers, no additional role is needed:</p>
+        <pre><code>&lt;!-- Main page header (automatically gets banner role) --&gt;
+&lt;header&gt;
+    &lt;h1&gt;Site Title&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;!-- Section header (no banner role needed) --&gt;
+&lt;section&gt;
+    &lt;header&gt;
+        &lt;h2&gt;Section Title&lt;/h2&gt;
+    &lt;/header&gt;
+&lt;/section&gt;</code></pre>
+
+        <h3>4. Keep Header Content Focused</h3>
+        <p>Include only introductory or navigational content in headers:</p>
+        <ul>
+            <li>Page title or section title (heading)</li>
+            <li>Logo</li>
+            <li>Primary navigation</li>
+            <li>Search function</li>
+            <li>Brief introductory text</li>
+        </ul>
+
+        <h3>5. Make Navigation Accessible</h3>
+        <p>Ensure navigation menus within headers are fully accessible:</p>
+        <pre><code>&lt;header&gt;
+    &lt;h1&gt;Site Title&lt;/h1&gt;
+    &lt;nav aria-label="Main navigation"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+        <h3>6. Don't Nest Header Elements</h3>
+        <p>Avoid nesting header elements inside each other. Instead, use appropriate sectioning elements:</p>
+        <pre><code>&lt;!-- Incorrect: Nested headers --&gt;
+&lt;header&gt;
+    &lt;h1&gt;Main Title&lt;/h1&gt;
+    &lt;header&gt;
+        &lt;h2&gt;Subtitle&lt;/h2&gt;
+    &lt;/header&gt;
+&lt;/header&gt;
+
+&lt;!-- Correct: Proper sectioning --&gt;
+&lt;header&gt;
+    &lt;h1&gt;Main Title&lt;/h1&gt;
+    &lt;div&gt;
+        &lt;h2&gt;Subtitle&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+
+        <h3>7. Ensure Adequate Contrast</h3>
+        <p>Make sure text in the header has sufficient contrast with the background (minimum ratio of 4.5:1 for normal text, 3:1 for large text). This is particularly important for headers where branding often introduces color challenges.</p>
+
+        <h3>8. Make Headers Responsive</h3>
+        <p>Ensure header components adapt well to different screen sizes, maintaining functionality and accessibility:</p>
+        <pre><code>@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Ensure text remains readable */
+    header h1 {
+        font-size: 1.5em;
+    }
+}</code></pre>
+
+        <h3>9. Use Proper Header Semantics</h3>
+        <p>Use the header element for its intended purpose - to contain introductory content for its parent section. Don't use it for decorative elements or containers that don't function as true headers.</p>
+
+        <h3>10. Test with Assistive Technologies</h3>
+        <p>Verify your header implementation by testing with screen readers to ensure:</p>
+        <ul>
+            <li>The header is properly announced as a banner (for main page headers)</li>
+            <li>Skip links function correctly</li>
+            <li>Navigation is accessible and can be traversed with keyboard</li>
+            <li>The heading hierarchy is logical and navigable</li>
+        </ul>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Understanding Header Element Semantics</div>
+
+        <h2>The Semantic Meaning of the Header Element</h2>
+
+        <p>The &lt;header&gt; element represents introductory content for its nearest ancestor sectioning content or sectioning root element. It typically contains:</p>
+
+        <ul>
+            <li>One or more heading elements (h1-h6)</li>
+            <li>Logo or icon</li>
+            <li>Author information</li>
+            <li>Navigation</li>
+            <li>Search forms</li>
+        </ul>
+
+        <h3>Different Types of Headers</h3>
+
+        <h4>Page-level Header</h4>
+        <p>The main header of a page, typically containing the site title, logo, and main navigation:</p>
+        <pre><code>&lt;header&gt;
+    &lt;h1&gt;Website Name&lt;/h1&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+        <h4>Section-level Header</h4>
+        <p>A header that introduces a specific section of content:</p>
+        <pre><code>&lt;section&gt;
+    &lt;header&gt;
+        &lt;h2&gt;Section Title&lt;/h2&gt;
+        &lt;p&gt;Brief description of this section.&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;!-- Section content --&gt;
+&lt;/section&gt;</code></pre>
+
+        <h4>Article-level Header</h4>
+        <p>A header for an article, typically containing the article title and metadata:</p>
+        <pre><code>&lt;article&gt;
+    &lt;header&gt;
+        &lt;h2&gt;Article Title&lt;/h2&gt;
+        &lt;p&gt;Posted on: &lt;time datetime="2023-01-01"&gt;January 1, 2023&lt;/time&gt;&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;!-- Article content --&gt;
+&lt;/article&gt;</code></pre>
+
+        <h3>Landmark Role Considerations</h3>
+        <p>Headers have special significance in the accessibility tree:</p>
+        <ul>
+            <li>A &lt;header&gt; element that is a direct descendant of &lt;body&gt; automatically gets the "banner" landmark role</li>
+            <li>A &lt;header&gt; inside a sectioning element (article, section, etc.) does not get assigned any landmark role automatically</li>
+            <li>There should typically be only one "banner" landmark per page</li>
+        </ul>
+
+        <p>This distinction helps screen reader users understand which header represents the main site header versus section-specific headers.</p>
+    </section>
+</body>
+</html>

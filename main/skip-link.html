@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Main Without Proper Focus Management</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Main Examples</a>
+    </div>
+
+    <h1>Issue: Main Without Proper Focus Management</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 5: Main without proper focus management</div>
+        <header>
+            <h1>Website Title</h1>
+            <button onclick="document.getElementById('skipLink').focus()">Skip to Main Content</button>
+        </header>
+        <main id="mainContent">
+            <h2>Main Content</h2>
+            <p>This main content area has no proper focus management.</p>
+        </main>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Problem: The "Skip to Main Content" button incorrectly points to a non-existent ID ('skipLink') instead of 'mainContent', and the main element doesn't have a tabindex attribute to receive focus. This prevents keyboard users from effectively navigating to the main content.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+            <a href="#main-content" class="skip-link">Skip to Main Content</a>
+        </header>
+        <main id="main-content" tabindex="-1">
+            <h2>Main Content</h2>
+            <p>This main content area has proper focus management. The tabindex="-1" allows it to receive programmatic focus when the skip link is activated.</p>
+        </main>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Solution: Use an anchor link rather than a button for skip navigation, ensure the href points to the correct ID of the main element, and add tabindex="-1" to the main element so it can receive focus when the skip link is activated.</p>
+    </section>
+
+    <section>
+        <h2>Skip Link Best Practices</h2>
+        <p>Skip links are an essential accessibility feature that allows keyboard users to bypass repetitive navigation and quickly access the main content of a page. Here are the key implementation details:</p>
+
+        <h3>HTML Implementation</h3>
+        <pre><code>&lt;header&gt;
+    &lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+    &lt;!-- Navigation and header content --&gt;
+&lt;/header&gt;
+
+&lt;main id="main-content" tabindex="-1"&gt;
+    &lt;h2&gt;Main Content&lt;/h2&gt;
+    &lt;!-- Main content --&gt;
+&lt;/main&gt;</code></pre>
+
+        <h3>CSS for Skip Links</h3>
+        <p>The skip link should be invisible until focused, then become visible to sighted keyboard users:</p>
+        <pre><code>.skip-link {
+    position: absolute;
+    top: -40px; /* Off-screen position */
+    left: 0;
+    z-index: 1000;
+    padding: 8px;
+    background-color: #000;
+    color: #fff;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0; /* Brings the link into view when focused */
+}</code></pre>
+
+        <h3>JavaScript Focus Fix for WebKit</h3>
+        <p>Some browsers don't properly focus elements with tabindex="-1" when using anchor links. This JavaScript helps solve that issue:</p>
+        <pre><code>// Fix for some browsers that don't properly focus on elements with tabindex="-1"
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the skip link
+    const skipLink = document.querySelector('.skip-link');
+
+    // Add click event listener
+    skipLink.addEventListener('click', function(e) {
+        // Get the target element
+        const target = document.querySelector(this.getAttribute('href'));
+
+        // Set focus on the target
+        if (target) {
+            e.preventDefault();
+            target.focus();
+        }
+    });
+});</code></pre>
+
+        <h3>Testing Skip Links</h3>
+        <p>To test if your skip link is properly implemented:</p>
+        <ol>
+            <li>Load the page</li>
+            <li>Press the Tab key (the skip link should become visible)</li>
+            <li>Press Enter (focus should move to the main content)</li>
+            <li>Continue tabbing (focus should proceed through the main content, not return to the top)</li>
+        </ol>
+    </section>
+
+
+</body>
+</html>

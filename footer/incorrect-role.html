@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Footer with Incorrect ARIA Role</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Footer Examples</a>
+    </div>
+
+    <h1>Issue: Footer with Incorrect ARIA Role</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 3: Footer with incorrect ARIA role</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <footer role="main">
+            <p>&copy; 2023 Company Name</p>
+            <p>Contact: info@example.com</p>
+        </footer>
+        <p>Problem: Applying the "main" role to a footer creates confusing and contradictory semantics. This tells assistive technologies that this content is both footer content and the main content of the page.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main role="main">
+            <p>Main content goes here...</p>
+        </main>
+        <footer>
+            <p>&copy; 2023 Company Name</p>
+            <p>Contact: info@example.com</p>
+        </footer>
+        <p>Solution: Allow the footer element to use its default implicit "contentinfo" role (when at the document level) without overriding it. The role="main" should only be used on the element containing the primary content of the page, typically the main element.</p>
+        <p>Note: A footer element that is a direct descendant of the body has an implicit "contentinfo" landmark role; a footer inside an article or section doesn't get any landmark role automatically.</p>
+    </section>
+</body>
+</html>

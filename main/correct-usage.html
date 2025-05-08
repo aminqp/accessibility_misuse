@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correct Usage: Proper Main Element Implementation</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Main Examples</a>
+    </div>
+
+    <h1>Correct Usage: Proper Main Element Implementation</h1>
+
+    <section class="example good">
+        <div class="example-title">Correct Usage Example: Main Element with Skip Link</div>
+
+        <div class="demo-page">
+            <header>
+                <h1>Company Website</h1>
+                <nav aria-label="Primary navigation">
+                    <ul class="menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="#main-content" class="skip-link">Skip to main content</a>
+            </header>
+
+            <main id="main-content" tabindex="-1">
+                <h2>Main Content Heading</h2>
+                <p>This is the main content of the page. There is only one main element on the page, and it contains the primary, unique content.</p>
+
+                <article>
+                    <h3>Article Title</h3>
+                    <p>Article content goes here...</p>
+                </article>
+
+                <section>
+                    <h3>Section Title</h3>
+                    <p>Section content...</p>
+                </section>
+            </main>
+
+            <aside>
+                <h2>Related Information</h2>
+                <p>Sidebar content goes here...</p>
+            </aside>
+
+            <footer>
+                <nav aria-label="Footer navigation">
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </nav>
+                <p>&copy; 2023 Example Company</p>
+            </footer>
+        </div>
+
+        <h3>Why this is good:</h3>
+        <ul>
+            <li>There is exactly one <code>&lt;main&gt;</code> element on the page</li>
+            <li>The <code>&lt;main&gt;</code> element is not nested inside another landmark element</li>
+            <li>It contains the primary content of the document</li>
+            <li>It has an ID for "skip to content" links</li>
+            <li>It has tabindex="-1" to allow it to receive focus programmatically</li>
+            <li>Secondary content (navigation, complementary content) is outside the main element</li>
+            <li>All navigational elements have appropriate ARIA labels</li>
+            <li>The main content is preceded by a skip link for keyboard users</li>
+        </ul>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Skip Link Implementation Details</div>
+        <p>For a proper skip link implementation:</p>
+        <pre><code>&lt;header&gt;
+    &lt;!-- Header content --&gt;
+    &lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+&lt;/header&gt;
+
+&lt;main id="main-content" tabindex="-1"&gt;
+    &lt;!-- Main content --&gt;
+&lt;/main&gt;</code></pre>
+
+        <p>CSS for the skip link:</p>
+        <pre><code>.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}</code></pre>
+
+        <p>This creates a skip link that is visually hidden until it receives focus from keyboard navigation, at which point it becomes visible for users who need it.</p>
+    </section>
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Using Div with Styling Instead of Semantic Footer</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Footer Examples</a>
+    </div>
+
+    <h1>Issue: Using Div with Styling Instead of Semantic Footer</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 2: Using div with styling instead of semantic footer</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <div class="styled-as-footer" style="background-color: #333; color: white; padding: 20px; text-align: center;">
+            <p>&copy; 2023 Company Name</p>
+            <p>Contact: info@example.com</p>
+        </div>
+        <p>Problem: Using a div with visual styling instead of a semantic footer element deprives screen reader users of the landmark navigation that footers provide. Screen readers can't identify this as footer content.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <footer>
+            <p>&copy; 2023 Company Name</p>
+            <p>Contact: info@example.com</p>
+        </footer>
+        <p>Solution: Use the semantic footer element for content that functions as a footer, regardless of its visual appearance. This provides proper landmarks for screen reader users while still allowing you to apply any desired styling with CSS.</p>
+        <div class="code-example">
+            <pre>
+/* You can apply the same styling to the semantic footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+            </pre>
+        </div>
+    </section>
+</body>
+</html>

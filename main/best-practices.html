@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Best Practices for the Main Element</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Main Examples</a>
+    </div>
+
+    <h1>Accessibility Best Practices for the Main Element</h1>
+
+    <section class="example good">
+        <div class="example-title">Main Element Accessibility Guidelines</div>
+
+        <h2>Key Best Practices for Accessible Main Elements</h2>
+
+        <h3>1. Use One Main Element Per Page</h3>
+        <p>Include exactly one <code>&lt;main&gt;</code> element per page to clearly identify the primary content:</p>
+        <pre><code>&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;main&gt;
+        &lt;!-- Primary content here --&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+        <h3>2. Do Not Nest Main Inside Landmark Elements</h3>
+        <p>Keep the main element at the proper document hierarchy, not nested inside other landmarks:</p>
+        <pre><code>&lt;!-- DON'T DO THIS --&gt;
+&lt;article&gt;
+    &lt;main&gt;...&lt;/main&gt;
+&lt;/article&gt;
+
+&lt;!-- CORRECT USAGE --&gt;
+&lt;header&gt;...&lt;/header&gt;
+&lt;main&gt;
+    &lt;article&gt;...&lt;/article&gt;
+&lt;/main&gt;</code></pre>
+
+        <h3>3. Use Skip Links with Main Elements</h3>
+        <p>Provide a skip link to the main content to help keyboard users bypass repetitive navigation:</p>
+        <pre><code>&lt;header&gt;
+    &lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+    &lt;!-- Navigation and other header content --&gt;
+&lt;/header&gt;
+&lt;main id="main-content" tabindex="-1"&gt;
+    &lt;!-- Main content --&gt;
+&lt;/main&gt;</code></pre>
+
+        <h3>4. Make Main Focusable for Skip Links</h3>
+        <p>Add tabindex="-1" to the main element so it can receive programmatic focus when skip links are activated:</p>
+        <pre><code>&lt;main id="main-content" tabindex="-1"&gt;
+    &lt;!-- Main content --&gt;
+&lt;/main&gt;</code></pre>
+
+        <h3>5. Preserve Native Semantics</h3>
+        <p>Do not override the native role of the main element with ARIA:</p>
+        <pre><code>&lt;!-- DON'T DO THIS --&gt;
+&lt;main role="complementary"&gt;
+    &lt;!-- This creates conflicting semantics --&gt;
+&lt;/main&gt;
+
+&lt;!-- CORRECT USAGE --&gt;
+&lt;main&gt;
+    &lt;!-- Let the main element use its implicit role="main" --&gt;
+&lt;/main&gt;</code></pre>
+
+        <h3>6. Ensure Main Is Visible</h3>
+        <p>Do not hide the main element unless you're replacing it with another main element (such as in a single-page application):</p>
+        <pre><code>&lt;!-- DON'T DO THIS --&gt;
+&lt;main hidden&gt;
+    &lt;!-- Content that should be visible but isn't --&gt;
+&lt;/main&gt;
+&lt;div&gt;
+    &lt;!-- Visible content that should be in main --&gt;
+&lt;/div&gt;
+
+&lt;!-- CORRECT USAGE --&gt;
+&lt;main&gt;
+    &lt;!-- Visible, accessible main content --&gt;
+&lt;/main&gt;</code></pre>
+
+        <h3>7. Include Unique Content</h3>
+        <p>The main element should contain the unique content of the page, not repeated content like navigation:</p>
+        <pre><code>&lt;!-- DON'T DO THIS --&gt;
+&lt;main&gt;
+    &lt;nav&gt;
+        &lt;!-- Primary navigation --&gt;
+    &lt;/nav&gt;
+&lt;/main&gt;
+
+&lt;!-- CORRECT USAGE --&gt;
+&lt;header&gt;
+    &lt;nav&gt;
+        &lt;!-- Primary navigation --&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+    &lt;!-- Unique page content --&gt;
+&lt;/main&gt;</code></pre>
+
+        <h3>8. Use Proper Heading Structure</h3>
+        <p>Begin the main content with a heading that identifies the page content:</p>
+        <pre><code>&lt;main id="main-content" tabindex="-1"&gt;
+    &lt;h1&gt;Page Title&lt;/h1&gt;
+    &lt;!-- Or if h1 is in the header: --&gt;
+    &lt;h2&gt;Main Content Heading&lt;/h2&gt;
+    &lt;!-- Remaining content --&gt;
+&lt;/main&gt;</code></pre>
+    </section>
+
+    <section>
+        <h2>Skip Link Implementation</h2>
+
+        <h3>HTML Structure</h3>
+        <pre><code>&lt;header&gt;
+    &lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+    &lt;!-- Other header content --&gt;
+&lt;/header&gt;
+
+&lt;main id="main-content" tabindex="-1"&gt;
+    &lt;!-- Main content --&gt;
+&lt;/main&gt;</code></pre>
+
+        <h3>CSS for Skip Link</h3>
+        <p>This CSS makes the skip link visually hidden but appears when focused:</p>
+        <pre><code>.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}</code></pre>
+
+        <h3>JavaScript Focus Fix</h3>
+        <p>For some browsers, you may need this focus-fix JavaScript:</p>
+        <pre><code>// Fix for Webkit browsers that don't focus on elements with tabindex="-1"
+document.addEventListener('DOMContentLoaded', function() {
+    var skipLink = document.querySelector('.skip-link');
+    skipLink.addEventListener('click', function(e) {
+        var mainContent = document.querySelector('#main-content');
+        mainContent.focus();
+    });
+});</code></pre>
+    </section>
+
+    <section>
+        <h2>Complete Main Element Accessibility Checklist</h2>
+        <ul>
+            <li>Include exactly one <code>&lt;main&gt;</code> element per page</li>
+            <li>Keep the <code>&lt;main&gt;</code> element a direct child of the <code>&lt;body&gt;</code> or a wrapper element</li>
+            <li>Do not nest <code>&lt;main&gt;</code> inside other landmark elements (header, footer, nav, aside, article)</li>
+            <li>Provide an ID on the <code>&lt;main&gt;</code> element for "skip to content" links</li>
+            <li>Add tabindex="-1" to the <code>&lt;main&gt;</code> element to allow it to receive keyboard focus</li>
+            <li>Include a visible "skip to content" link at the beginning of the page</li>
+            <li>Ensure the <code>&lt;main&gt;</code> element contains unique content, not repeated site-wide elements</li>
+            <li>Do not override the implicit role="main" with a different ARIA role</li>
+            <li>Do not hide the <code>&lt;main&gt;</code> element unless you're replacing it with another <code>&lt;main&gt;</code> (like in SPAs)</li>
+            <li>Begin the <code>&lt;main&gt;</code> content with a heading that clearly identifies the page content</li>
+            <li>Ensure every page has a <code>&lt;main&gt;</code> element even when content appears in different structures</li>
+            <li>Consider adding an aria-label to the <code>&lt;main&gt;</code> element if the page has a complex structure</li>
+            <li>Test keyboard navigation with the skip link to confirm it works correctly</li>
+            <li>Verify screen readers correctly identify and announce the main content</li>
+            <li>Check that focus management works correctly when using the skip link</li>
+        </ul>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Advanced Main Element Patterns</div>
+
+        <h3>Single Page Applications</h3>
+        <p>For single page applications where content changes dynamically:</p>
+        <pre><code>&lt;!-- When loading new content: --&gt;
+&lt;script&gt;
+// 1. Update the main content
+document.getElementById('main-content').innerHTML = newContent;
+
+// 2. Set focus to the main element
+document.getElementById('main-content').focus();
+
+// 3. Optionally announce to screen readers
+document.getElementById('aria-live-region').textContent = 'Page content updated: ' + pageTitle;
+&lt;/script&gt;
+
+&lt;!-- Include an aria-live region elsewhere in the document --&gt;
+&lt;div id="aria-live-region" class="sr-only" aria-live="polite"&gt;&lt;/div&gt;</code></pre>
+
+        <h3>Main Element with Regions</h3>
+        <p>For complex main content, consider using aria-labelledby to label sections:</p>
+        <pre><code>&lt;main id="main-content" tabindex="-1"&gt;
+    &lt;h1 id="page-title"&gt;Page Title&lt;/h1&gt;
+
+    &lt;section aria-labelledby="section1-heading"&gt;
+        &lt;h2 id="section1-heading"&gt;Section 1&lt;/h2&gt;
+        &lt;!-- Section content --&gt;
+    &lt;/section&gt;
+
+    &lt;section aria-labelledby="section2-heading"&gt;
+        &lt;h2 id="section2-heading"&gt;Section 2&lt;/h2&gt;
+        &lt;!-- Section content --&gt;
+    &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+    </section>
+
+
+</body>
+</html>

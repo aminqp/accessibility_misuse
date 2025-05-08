@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Best Practices for Headings</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Heading Examples</a>
+    </div>
+
+    <h1>Accessibility Best Practices for Headings</h1>
+
+    <section class="example good">
+        <div class="example-title">Heading Accessibility Guidelines</div>
+
+        <h2>Key Best Practices for Accessible Headings</h2>
+
+        <h3>1. Use a Single H1</h3>
+        <p>Each page should have exactly one h1 element that clearly identifies the page's main topic or purpose.</p>
+        <pre><code>&lt;h1&gt;Page Title&lt;/h1&gt;</code></pre>
+
+        <h3>2. Maintain Proper Hierarchy</h3>
+        <p>Use headings in sequential order without skipping levels (h1 → h2 → h3). This creates a logical document outline.</p>
+        <pre><code>&lt;h1&gt;Page Title&lt;/h1&gt;
+&lt;h2&gt;Major Section&lt;/h2&gt;
+&lt;h3&gt;Subsection&lt;/h3&gt;
+&lt;h3&gt;Another Subsection&lt;/h3&gt;
+&lt;h2&gt;Another Major Section&lt;/h2&gt;</code></pre>
+
+        <h3>3. Use Headings for Structure, Not Styling</h3>
+        <p>Select heading levels based on their semantic meaning, not their default appearance. Use CSS for styling:</p>
+        <pre><code>/* Adjusting visual appearance while preserving semantics */
+h2 {
+    font-size: 1.5em;
+    color: #0066cc;
+}
+/* Instead of using h4 just for its smaller size */</code></pre>
+
+        <h3>4. Make Headings Descriptive</h3>
+        <p>Write clear, descriptive headings that accurately summarize the content that follows:</p>
+        <ul>
+            <li>Good: <code>&lt;h2&gt;How to Apply for Financial Aid&lt;/h2&gt;</code></li>
+            <li>Poor: <code>&lt;h2&gt;Information&lt;/h2&gt;</code></li>
+        </ul>
+
+        <h3>5. Keep Headings Concise</h3>
+        <p>Headings should be brief while still being descriptive. Avoid very long headings that are difficult to scan.</p>
+
+        <h3>6. Ensure Proper Contrast</h3>
+        <p>Maintain sufficient color contrast between headings and their background (minimum ratio of 4.5:1 for normal text, 3:1 for large text).</p>
+
+        <h3>7. Don't Hide Headings</h3>
+        <p>If a heading is needed for screen reader users but should be hidden visually, use accessible hiding techniques:</p>
+        <pre><code>.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Instead of display: none; which hides from all users */</code></pre>
+
+        <h3>8. Avoid Empty Headings</h3>
+        <p>Always include text content in heading elements. Empty headings confuse screen reader users.</p>
+
+        <h3>9. Don't Use Headings for Buttons or Links</h3>
+        <p>Don't wrap headings around interactive elements:</p>
+        <ul>
+            <li>Incorrect: <code>&lt;h2&gt;&lt;button&gt;Click Me&lt;/button&gt;&lt;/h2&gt;</code></li>
+            <li>Better: <code>&lt;h2&gt;Section Title&lt;/h2&gt;&lt;button&gt;Click Me&lt;/button&gt;</code></li>
+        </ul>
+
+        <h3>10. Test with Screen Readers</h3>
+        <p>Verify your heading structure by testing with screen readers and using the document outline feature in browser developer tools.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">How Screen Reader Users Navigate with Headings</div>
+
+        <h2>Understanding Heading Navigation</h2>
+
+        <p>Screen reader users often navigate web pages by jumping from heading to heading. This is one of the most common navigation techniques because it allows users to quickly understand the page structure and find specific content.</p>
+
+        <h3>Common Screen Reader Commands for Headings</h3>
+        <ul>
+            <li>JAWS and NVDA: Press <strong>H</strong> to move to the next heading</li>
+            <li>VoiceOver: Use <strong>Command + Option + H</strong> to move to the next heading</li>
+            <li>Most screen readers: Use numbers 1-6 to jump to specific heading levels (e.g., press 2 to jump to the next h2)</li>
+        </ul>
+
+        <h3>Why Proper Heading Structure Matters</h3>
+        <p>When headings are used correctly:</p>
+        <ul>
+            <li>Users can quickly scan the page structure</li>
+            <li>Navigation between sections becomes efficient</li>
+            <li>The relationship between content is clear</li>
+            <li>Users can build a mental map of the page</li>
+        </ul>
+
+        <p>Improper heading structure forces users to read through all content linearly, creating a frustrating and time-consuming experience.</p>
+    </section>
+
+
+</body>
+</html>

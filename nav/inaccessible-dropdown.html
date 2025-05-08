@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Nav with Non-Keyboard-Accessible Dropdown Menus</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Nav Examples</a>
+    </div>
+
+    <h1>Issue: Nav with Non-Keyboard-Accessible Dropdown Menus</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 6: Nav with non-keyboard-accessible dropdown menus</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav>
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        <a href="#" onclick="toggleDropdown(event)">Products</a>
+                        <ul style="display: none;">
+                            <li><a href="#">Product 1</a></li>
+                            <li><a href="#">Product 2</a></li>
+                            <li><a href="#">Product 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <p>Problem: This navigation uses mouse-only events (onclick) for dropdown menus without keyboard support, making the navigation unusable for keyboard-only users and many assistive technology users.</p>
+        <p class="code-comment">/* JavaScript function:
+            function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.target.nextElementSibling;
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+            }
+            */</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav aria-label="Main navigation">
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        <a href="#" aria-expanded="false" aria-haspopup="true">Products</a>
+                        <ul style="display: none;" role="menu">
+                            <li role="menuitem"><a href="#">Product 1</a></li>
+                            <li role="menuitem"><a href="#">Product 2</a></li>
+                            <li role="menuitem"><a href="#">Product 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <p>Solution: Implement keyboard-accessible dropdown menus using appropriate ARIA attributes and ensure all functionality is available via keyboard. The JavaScript should handle both mouse and keyboard events.</p>
+        <p class="code-comment">/* Improved JavaScript:
+            document.addEventListener('DOMContentLoaded', function() {
+                const dropdownButton = document.querySelector('nav a[aria-haspopup="true"]');
+                const dropdown = dropdownButton.nextElementSibling;
+
+                // Handle click
+                dropdownButton.addEventListener('click', function(event) {
+                    toggleDropdown(event);
+                });
+
+                // Handle keyboard
+                dropdownButton.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        toggleDropdown(event);
+                    }
+                });
+
+                function toggleDropdown(event) {
+                    event.preventDefault();
+                    const isExpanded = dropdownButton.getAttribute('aria-expanded') === 'true';
+                    dropdownButton.setAttribute('aria-expanded', !isExpanded);
+                    dropdown.style.display = isExpanded ? 'none' : 'block';
+                }
+            });
+            */</p>
+    </section>
+
+
+</body>
+</html>

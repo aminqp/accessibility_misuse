@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Empty Nav Element with JavaScript-Generated Content</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Nav Examples</a>
+    </div>
+
+    <h1>Issue: Empty Nav Element with JavaScript-Generated Content</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 5: Empty nav element with JavaScript-generated content</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav id="main-nav">
+                <!-- Navigation will be added with JavaScript -->
+            </nav>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <p>Problem: An empty nav element that relies entirely on JavaScript to populate its content can leave screen reader users with no navigation if JavaScript fails to load or is disabled. There's no fallback content provided.</p>
+        <p class="code-comment">/* JavaScript would populate the nav like this:
+            document.getElementById('main-nav').innerHTML = '&lt;ul&gt;&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;';
+            */</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav id="enhanced-nav" aria-label="Main navigation">
+                <!-- Fallback navigation that will be enhanced with JavaScript -->
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <p>Solution: Always include basic HTML navigation as a fallback, which can then be enhanced with JavaScript. This ensures navigation is available to all users regardless of whether JavaScript is enabled or functioning properly.</p>
+        <p class="code-comment">/* JavaScript would enhance the existing navigation:
+            document.addEventListener('DOMContentLoaded', function() {
+                // Add enhanced features to the navigation
+                const nav = document.getElementById('enhanced-nav');
+                // Add event listeners, animations, etc.
+            });
+            */</p>
+    </section>
+
+
+</body>
+</html>

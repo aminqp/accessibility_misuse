@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correct Usage: Multiple Labeled Nav Elements</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Nav Examples</a>
+    </div>
+
+    <h1>Correct Usage: Multiple Labeled Nav Elements</h1>
+
+    <section class="example good">
+        <div class="example-title">Correct Usage Example: Multiple Labeled Nav Elements</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav aria-label="Primary navigation">
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div style="display: flex; gap: 20px;">
+            <main style="flex: 3">
+                <h2>Main Content</h2>
+                <p>Content goes here...</p>
+
+                <article>
+                    <h3>Article Title</h3>
+                    <p>Article content...</p>
+                </article>
+            </main>
+
+            <aside style="flex: 1">
+                <nav aria-label="Blog categories">
+                    <h2>Categories</h2>
+                    <ul>
+                        <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 2</a></li>
+                        <li><a href="#">Category 3</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+
+        <footer>
+            <nav aria-label="Footer links">
+                <h2>Site Links</h2>
+                <ul class="menu">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2023 Example Company</p>
+        </footer>
+
+        <p>This demonstrates proper usage where:</p>
+        <ul>
+            <li>Each nav element has a descriptive aria-label to identify its purpose</li>
+            <li>Nav elements contain actual navigation links</li>
+            <li>Each nav has a heading (visually or via aria-labelledby)</li>
+            <li>Nav elements are used only for significant navigation sections</li>
+            <li>Different types of navigation (primary, secondary, footer) are properly labeled</li>
+        </ul>
+
+        <p>Best practices demonstrated:</p>
+        <ul>
+            <li>Primary navigation in the header is clearly labeled</li>
+            <li>Specialized navigation (Blog categories) in the sidebar has its own descriptive label</li>
+            <li>Footer navigation has a distinct label to distinguish it from other navigation elements</li>
+            <li>Each navigation section uses proper list markup for the links</li>
+            <li>Navigation headings provide additional context for all users</li>
+        </ul>
+    </section>
+
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Hidden Main Element</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Main Examples</a>
+    </div>
+
+    <h1>Issue: Hidden Main Element</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 4: Hidden main element</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main hidden>
+            <h2>Main Content</h2>
+            <p>This main content is hidden and thus inaccessible to all users.</p>
+        </main>
+        <div>
+            <h2>Visible Content</h2>
+            <p>This is the content users actually see, but it's not in a main element.</p>
+        </div>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Problem: Hiding the <code>&lt;main&gt;</code> element with the hidden attribute while displaying the primary content elsewhere creates confusion for screen reader users who rely on the <code>&lt;main&gt;</code> element to find the primary content.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <h2>Main Content</h2>
+            <p>This main content is visible and accessible to all users.</p>
+            <div>
+                <h3>Additional Content</h3>
+                <p>This content is also within the main element, making it properly structured and accessible.</p>
+            </div>
+        </main>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Solution: Ensure that the <code>&lt;main&gt;</code> element contains all the primary content and is visible to users. If content is meant to be the primary content of the page, it should be inside the main element and not hidden.</p>
+    </section>
+
+    <section>
+        <h2>Appropriate Use of Hidden Content</h2>
+        <p>While you should not hide the main element itself, there are legitimate cases for hiding content within a page:</p>
+        <ul>
+            <li><strong>Single Page Applications:</strong> When switching between views, you might temporarily hide one main element and show another (but not at the same time)</li>
+            <li><strong>Progressive Disclosure:</strong> Using details/summary or expandable sections to show additional content when needed</li>
+            <li><strong>Screen Reader Only Text:</strong> Providing extra context for screen reader users without affecting visual presentation</li>
+        </ul>
+
+        <h3>Example: Legitimate Use of Hidden Content</h3>
+        <pre><code>&lt;main id="main-content"&gt;
+    &lt;h1&gt;Product Information&lt;/h1&gt;
+
+    &lt;!-- Visually hidden instructions for screen reader users --&gt;
+    &lt;p class="sr-only"&gt;Use the tabs below to navigate product information.&lt;/p&gt;
+
+    &lt;div class="tabs"&gt;
+        &lt;button aria-selected="true" id="tab1"&gt;Description&lt;/button&gt;
+        &lt;button aria-selected="false" id="tab2"&gt;Specifications&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div id="panel1" aria-labelledby="tab1"&gt;
+        &lt;h2&gt;Product Description&lt;/h2&gt;
+        &lt;p&gt;Product details here...&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div id="panel2" aria-labelledby="tab2" hidden&gt;
+        &lt;h2&gt;Product Specifications&lt;/h2&gt;
+        &lt;p&gt;Technical specifications here...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+        <p>In this example, the main element itself is visible, but some content within it is conditionally shown or hidden based on user interaction. This is an appropriate use of hidden content.</p>
+    </section>
+
+
+</body>
+</html>

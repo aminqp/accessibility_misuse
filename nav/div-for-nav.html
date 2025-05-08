@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Using div for Navigation Instead of nav</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Nav Examples</a>
+    </div>
+
+    <h1>Issue: Using div for Navigation Instead of nav</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 3: Using div for navigation instead of nav</div>
+        <header>
+            <h1>Website Title</h1>
+            <div>
+                <ul class="visual-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <p>Problem: Using a div instead of the semantic nav element for navigation deprives screen reader users of the navigation landmark, making it harder to find and navigate through the site's main navigation options.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav aria-label="Primary navigation">
+                <ul class="visual-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <p>Solution: Use the semantic nav element with an appropriate aria-label for navigation menus, which provides better accessibility through landmark navigation for screen reader users.</p>
+    </section>
+
+
+</body>
+</html>

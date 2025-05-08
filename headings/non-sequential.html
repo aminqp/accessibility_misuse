@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Not Using Headings Sequentially</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Heading Examples</a>
+    </div>
+
+    <h1>Issue: Not Using Headings Sequentially</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 4: Not using headings sequentially</div>
+        <h2>Main Section</h2>
+        <h4>Subsection</h4>
+        <h3>Another Subsection</h3>
+        <p>Problem: The heading order is confusing here, with h4 coming before h3. This creates a disorganized document structure that is difficult for screen reader users to navigate and understand. Screen readers often provide navigation by heading level, and non-sequential headings break this navigational structure.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <h2>Main Section</h2>
+        <h3>First Subsection</h3>
+        <h3>Second Subsection</h3>
+        <h4>Nested Subsection</h4>
+        <p>Solution: Maintain a logical heading structure where each level is properly nested under its parent. Use headings sequentially (h2, then h3, then h4) to create a clear document outline. This allows screen reader users to easily understand and navigate the content hierarchy.</p>
+    </section>
+
+
+</body>
+</html>

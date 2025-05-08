@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Best Practices for the Nav Element</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Nav Examples</a>
+    </div>
+
+    <h1>Accessibility Best Practices for the Nav Element</h1>
+
+    <section class="example good">
+        <div class="example-title">Best Practice: Keyboard and Screen Reader Accessibility</div>
+
+        <h2>Key Accessibility Guidelines for Nav Elements</h2>
+
+        <h3>1. Clear Labeling</h3>
+        <p>Each nav element should have a descriptive label:</p>
+        <pre><code>&lt;nav aria-label="Primary navigation"&gt;
+    &lt;!-- Navigation content --&gt;
+&lt;/nav&gt;</code></pre>
+        <p>Or use aria-labelledby to reference a visible heading:</p>
+        <pre><code>&lt;h2 id="main-nav-heading"&gt;Main Navigation&lt;/h2&gt;
+&lt;nav aria-labelledby="main-nav-heading"&gt;
+    &lt;!-- Navigation content --&gt;
+&lt;/nav&gt;</code></pre>
+
+        <h3>2. Proper Structure</h3>
+        <p>Use unordered lists for navigation menus:</p>
+        <pre><code>&lt;nav aria-label="Main navigation"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+        <h3>3. Keyboard Navigation</h3>
+        <p>Ensure all navigation is fully keyboard accessible:</p>
+        <ul>
+            <li>All links must be reachable with the Tab key</li>
+            <li>Dropdown menus should be operable with keyboard (Enter/Space to open, arrow keys to navigate)</li>
+            <li>Visible focus indicators should be present for all interactive elements</li>
+        </ul>
+
+        <h3>4. Skip Navigation Link</h3>
+        <p>Add a skip link at the beginning of the page to allow keyboard users to bypass repetitive navigation:</p>
+        <pre><code>&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+&lt;!-- Navigation here --&gt;
+&lt;main id="main-content"&gt;
+    &lt;!-- Main content --&gt;
+&lt;/main&gt;</code></pre>
+        <p>With CSS to show the skip link only when it receives focus:</p>
+        <pre><code>.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+.skip-link:focus {
+    top: 0;
+}</code></pre>
+
+        <h3>5. Current Page Indication</h3>
+        <p>Clearly indicate the current page in navigation:</p>
+        <pre><code>&lt;nav aria-label="Main navigation"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+        <h3>6. Mobile Navigation Considerations</h3>
+        <p>For hamburger menus or collapsible navigation:</p>
+        <ul>
+            <li>Use <code>aria-expanded</code> to indicate the open/closed state</li>
+            <li>Use <code>aria-controls</code> to associate the button with the navigation it controls</li>
+            <li>Provide a clear button label</li>
+        </ul>
+        <pre><code>&lt;button aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu"&gt;
+    &lt;span&gt;☰&lt;/span&gt;
+&lt;/button&gt;
+&lt;nav id="mobile-nav" aria-label="Main navigation" hidden&gt;
+    &lt;!-- Navigation content --&gt;
+&lt;/nav&gt;</code></pre>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Real-World Example: Complete Accessible Navigation</div>
+
+        <a href="#main-example" class="skip-link" style="position: relative; display: inline-block; background: #000; color: white; padding: 8px; margin-bottom: 10px;">Skip to main content (example)</a>
+
+        <header>
+            <h1>Website Title</h1>
+            <button aria-expanded="false" aria-controls="main-menu" class="menu-toggle" style="display: block; margin-bottom: 10px;">
+                <span aria-hidden="true">☰</span>
+                <span>Menu</span>
+            </button>
+
+            <nav id="main-menu" aria-label="Main navigation">
+                <ul class="menu">
+                    <li><a href="#" aria-current="page">Home</a></li>
+                    <li>
+                        <a href="#" aria-expanded="false" aria-haspopup="true">Products</a>
+                        <ul role="menu" style="display: none;">
+                            <li role="menuitem"><a href="#">Product Category 1</a></li>
+                            <li role="menuitem"><a href="#">Product Category 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div style="display: flex; gap: 20px;">
+            <main id="main-example" style="flex: 3">
+                <h2>Main Content</h2>
+                <p>Notice how this example includes:</p>
+                <ul>
+                    <li>Skip link for keyboard users</li>
+                    <li>Mobile menu toggle button with proper ARIA attributes</li>
+                    <li>Current page indicator with aria-current</li>
+                    <li>Dropdown menu with appropriate ARIA attributes</li>
+                    <li>Properly structured navigation lists</li>
+                </ul>
+            </main>
+
+            <aside style="flex: 1">
+                <nav aria-labelledby="secondary-nav-title">
+                    <h2 id="secondary-nav-title">Related Links</h2>
+                    <ul>
+                        <li><a href="#">Related Topic 1</a></li>
+                        <li><a href="#">Related Topic 2</a></li>
+                        <li><a href="#">Related Topic 3</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+
+        <p>Additional considerations for this example:</p>
+        <ul>
+            <li>The hamburger menu button includes both an icon and text label</li>
+            <li>The secondary navigation uses aria-labelledby to reference its visible heading</li>
+            <li>The current page link has aria-current="page" to indicate the current location</li>
+            <li>The dropdown menu has appropriate ARIA roles and states</li>
+            <li>All interactive elements have appropriate focus styles (not shown in this static example)</li>
+        </ul>
+    </section>
+
+
+
+    <script>
+        // This is for demonstration purposes only
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            // In a real implementation, this would toggle the menu visibility
+        });
+
+        document.querySelector('a[aria-haspopup="true"]').addEventListener('click', function(event) {
+            event.preventDefault();
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            this.nextElementSibling.style.display = isExpanded ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>

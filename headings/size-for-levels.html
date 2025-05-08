@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Using Size to Determine Heading Levels</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Heading Examples</a>
+    </div>
+
+    <h1>Issue: Using Size to Determine Heading Levels</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 6: Using size to determine heading levels</div>
+        <h1 style="font-size: 14px;">This is visually small but semantically an h1</h1>
+        <h3 style="font-size: 2em;">This is visually large but semantically an h3</h3>
+        <p>Problem: Heading levels should represent the document structure, not be chosen based on their visual size. When headings are selected based on their default styling rather than their semantic meaning, the document structure becomes confused and difficult for screen reader users to navigate.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <h1>Main Page Title</h1>
+        <h2>Section Title</h2>
+        <h3>Subsection Title</h3>
+        <p>Solution: Choose heading levels based on their semantic meaning and document structure, then use CSS to adjust their visual appearance if needed. This approach maintains the correct document outline while allowing for design flexibility:</p>
+        <div class="code-example">
+            <pre>
+/* CSS to adjust heading sizes while maintaining semantics */
+h1 {
+    font-size: 1.8em;
+}
+h2 {
+    font-size: 1.5em;
+}
+h3 {
+    font-size: 1.3em;
+}
+            </pre>
+        </div>
+    </section>
+
+
+</body>
+</html>

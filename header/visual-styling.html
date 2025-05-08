@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Using Header for Visual Styling Only</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Header Examples</a>
+    </div>
+
+    <h1>Issue: Using Header for Visual Styling Only</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 3: Using header for visual styling only</div>
+        <header style="background-color: #333; color: white; padding: 20px;">
+            <p>This content just needs to stand out visually</p>
+        </header>
+        <p>Problem: Using the header element purely for visual styling rather than semantic structure misuses the element's purpose. This confuses assistive technologies and screen readers, which expect header elements to contain introductory content for a section.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <div class="highlighted-content" style="background-color: #333; color: white; padding: 20px;">
+            <p>This content just needs to stand out visually</p>
+        </div>
+        <p>Solution: Use regular div elements with appropriate CSS classes for content that only needs visual distinction. Reserve the header element for actual introductory content of sections. This maintains the correct semantic meaning of header elements while still allowing for visual styling flexibility.</p>
+        <div class="code-example">
+            <pre>
+.highlighted-content {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+            </pre>
+        </div>
+    </section>
+
+
+</body>
+</html>

@@ -5,5 +5,12 @@
     "html",
     "css"
   ],
-  "license": "MIT"
+  "main": "index.html",
+  "scripts": {
+    "start": "serve"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "11.2.0"
+  }
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Footer Inside Generic Container</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Footer Examples</a>
+    </div>
+
+    <h1>Issue: Footer Inside Generic Container</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 5: Footer inside a section without sectioning context</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <div>
+            <p>This is some content in a generic div...</p>
+            <footer>
+                <p>This footer relates to the div above, but the relationship is unclear.</p>
+            </footer>
+        </div>
+        <p>Problem: When a footer is placed inside a generic container like a div, the relationship between the footer and its parent content is not semantically clear. Footers should be inside sectioning elements (article, section, aside, nav) or at the document level.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <section>
+            <h2>Section Title</h2>
+            <p>This is some content in a properly structured section...</p>
+            <footer>
+                <p>This footer clearly relates to the section above.</p>
+            </footer>
+        </section>
+        <p>Solution: Place footers inside proper sectioning elements (article, section, aside, nav) to create a clear semantic relationship between the footer and its related content. This helps assistive technologies understand the structure and relationship of the content.</p>
+        <div class="code-example">
+            <pre>
+/* Another good example: footer in an article */
+&lt;article&gt;
+    &lt;h2&gt;Article Title&lt;/h2&gt;
+    &lt;p&gt;Article content...&lt;/p&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Posted by: Author Name&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;
+            </pre>
+        </div>
+    </section>
+</body>
+</html>

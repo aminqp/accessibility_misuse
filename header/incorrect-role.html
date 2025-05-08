@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Header with Incorrect Role Association</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Header Examples</a>
+    </div>
+
+    <h1>Issue: Header with Incorrect Role Association</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 7: Using header without proper landmark role association</div>
+        <div class="highlight">
+            <header role="banner">
+                <h1>Main Website Title</h1>
+            </header>
+        </div>
+        <section>
+            <header>
+                <h2>Section Title</h2>
+            </header>
+            <p>Content...</p>
+        </section>
+        <div class="highlight">
+            <header role="banner">
+                <h2>Another Main Header</h2>
+            </header>
+        </div>
+        <p>Problem: Multiple headers with the same landmark role (banner) create confusion for screen reader users. There should typically be only one banner per page. This violates the ARIA authoring practices and creates an ambiguous page structure.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header role="banner">
+            <h1>Main Website Title</h1>
+            <nav aria-label="Primary navigation">
+                <!-- Navigation content -->
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <header>
+                    <h2>Section Title</h2>
+                </header>
+                <p>Content...</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Another Section</h2>
+                </header>
+                <p>More content...</p>
+            </section>
+        </main>
+
+        <p>Solution: Use the banner role only for the primary site header, and leave other header elements with their default role. For section-specific headers, don't add landmark roles. This creates a clear landmark structure for assistive technology users.</p>
+        <p>Note: The banner role is automatically assigned to a header element when it's a direct child of the body element, so you typically don't need to add role="banner" explicitly unless you're using a different element structure.</p>
+    </section>
+</body>
+</html>

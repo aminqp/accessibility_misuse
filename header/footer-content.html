@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Using Header for Footer Content</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Header Examples</a>
+    </div>
+
+    <h1>Issue: Using Header for Footer Content</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 6: Using header for footer content</div>
+        <article>
+            <h2>Article Title</h2>
+            <p>Article content goes here...</p>
+            <header>
+                <p>Posted on: January 1, 2023 | Author: John Doe</p>
+                <p>Categories: Web Design, Accessibility</p>
+            </header>
+        </article>
+        <p>Problem: Using header for metadata or footer information is semantically incorrect. This information should be in a footer element. This misuse confuses screen reader users who expect headers to contain introductory content, not concluding metadata.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <article>
+            <header>
+                <h2>Article Title</h2>
+            </header>
+            <p>Article content goes here...</p>
+            <footer>
+                <p>Posted on: January 1, 2023 | Author: John Doe</p>
+                <p>Categories: Web Design, Accessibility</p>
+            </footer>
+        </article>
+        <p>Solution: Use the footer element for metadata, attribution information, and similar content that appears at the end of a section. Reserve the header element for introductory content that appears at the beginning of a section. This creates a logical document structure that matches user expectations and is clearer for assistive technologies.</p>
+    </section>
+</body>
+</html>

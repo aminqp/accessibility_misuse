@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Multiple Header Elements in One Section</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Header Examples</a>
+    </div>
+
+    <h1>Issue: Multiple Header Elements in One Section</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 2: Multiple header elements in one section</div>
+        <article>
+            <header>
+                <h2>First Header</h2>
+            </header>
+            <p>Some content here...</p>
+            <header>
+                <h3>Another Header in Same Section</h3>
+            </header>
+            <p>More content...</p>
+        </article>
+        <p>Problem: Multiple header elements in the same section create confusion about which one is the primary header, affecting the logical structure. This can make it difficult for screen reader users to understand the relationship between different parts of the content.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <article>
+            <header>
+                <h2>Article Title</h2>
+                <p>Published: January 1, 2023</p>
+            </header>
+            <p>Some content here...</p>
+            <section>
+                <h3>Section Title</h3>
+                <p>More content...</p>
+            </section>
+        </article>
+        <p>Solution: Use only one header element per sectioning content or sectioning root element. For subsections, use appropriate semantic elements (like section) with heading elements, but without additional header elements. This creates a clearer document structure for all users.</p>
+    </section>
+
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Main Element Used for Non-Unique Content</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Main Examples</a>
+    </div>
+
+    <h1>Issue: Main Element Used for Non-Unique Content</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 3: Main element used for non-unique content</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Main Navigation</h2>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <aside>
+                <h3>Recent Posts</h3>
+                <ul>
+                    <li><a href="#">Post 1</a></li>
+                    <li><a href="#">Post 2</a></li>
+                </ul>
+            </aside>
+        </main>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Problem: The <code>&lt;main&gt;</code> element should contain content unique to the document, not site-wide content like navigation menus. Here it's being misused to contain primarily navigational elements rather than the main content of the page.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav aria-label="Primary navigation">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>About Our Company</h2>
+            <p>This is the unique content about our company that is specific to this page and represents the main purpose of the document.</p>
+            <p>The main element contains content that is unique to this page, not repeated navigation or other site-wide elements.</p>
+        </main>
+        <aside>
+            <h2>Quick Links</h2>
+            <nav aria-label="Secondary navigation">
+                <ul>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <h3>Recent Posts</h3>
+            <ul>
+                <li><a href="#">Post 1</a></li>
+                <li><a href="#">Post 2</a></li>
+            </ul>
+        </aside>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Solution: Place navigation elements and other recurring content outside the main element. The main element should only contain the primary content unique to the current page. Navigation menus should be placed in nav elements either in the header, aside, or footer depending on their purpose and importance.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Important Notes</div>
+        <ul>
+            <li>The <code>&lt;main&gt;</code> element should contain content that is unique to the document</li>
+            <li>Navigation, site branding, search forms, and other content repeated across the site should be placed outside the main element</li>
+            <li>If site navigation must appear in different places throughout the site, it should be placed within <code>&lt;nav&gt;</code> elements in the appropriate landmarks (header, footer, aside), not in the main element</li>
+            <li>When users navigate by landmarks, they expect the main element to contain the primary content of the page, not auxiliary content like navigation</li>
+            <li>Use appropriate landmark elements for different types of content to create a clear document structure:
+                <ul>
+                    <li><code>&lt;header&gt;</code> for introductory content and primary navigation</li>
+                    <li><code>&lt;nav&gt;</code> for navigation blocks</li>
+                    <li><code>&lt;main&gt;</code> for the primary unique content</li>
+                    <li><code>&lt;aside&gt;</code> for tangentially related content</li>
+                    <li><code>&lt;footer&gt;</code> for site footer information</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+
+</body>
+</html>

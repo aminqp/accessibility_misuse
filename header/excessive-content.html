@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Header with Excessive Content</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Header Examples</a>
+    </div>
+
+    <h1>Issue: Header with Excessive Content</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 5: Header with excessive, non-header content</div>
+        <header>
+            <h2>Website Title</h2>
+            <p>Welcome to our website where we discuss many interesting topics.</p>
+            <p>Founded in 2010, our organization has been dedicated to...</p>
+            <p>Our mission is to provide the best information about...</p>
+            <p>Contact us at example@example.com</p>
+            <img src="#" alt="Company Logo">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div>
+                <form>
+                    <input type="text" placeholder="Search...">
+                    <button>Search</button>
+                </form>
+            </div>
+        </header>
+        <p>Problem: Overloading the header with too much content that should be elsewhere in the document structure makes it harder for users to find the main page content. A bloated header can create a poor user experience, especially for screen reader users who must navigate through all the header content before reaching the main content.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+            <img src="#" alt="Company Logo">
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <form role="search">
+                <input type="text" placeholder="Search...">
+                <button>Search</button>
+            </form>
+        </header>
+        <main>
+            <section>
+                <h2>Welcome</h2>
+                <p>Welcome to our website where we discuss many interesting topics.</p>
+
+                <h2>About Our Organization</h2>
+                <p>Founded in 2010, our organization has been dedicated to...</p>
+                <p>Our mission is to provide the best information about...</p>
+
+                <h2>Contact</h2>
+                <p>Contact us at example@example.com</p>
+            </section>
+        </main>
+        <p>Solution: Keep header content focused on introductory elements (site title, logo, primary navigation, search) and move detailed content to appropriate sections in the main content area. This creates a cleaner structure that's easier for all users to navigate, especially those using assistive technologies.</p>
+    </section>
+</body>
+</html>

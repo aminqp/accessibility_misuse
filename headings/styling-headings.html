@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Using Headings for Styling</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Heading Examples</a>
+    </div>
+
+    <h1>Issue: Using Headings for Styling</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 2: Using headings for styling</div>
+        <h4>This is not a true heading, just using h4 for its appearance</h4>
+        <p>Problem: Using heading tags just to make text look a certain way is problematic. Headings should represent the document structure, not be chosen for their visual styling. This practice confuses screen reader users by announcing something as a heading when it doesn't actually serve as a structural element.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <p class="styled-text" style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;">This is styled text, not a heading</p>
+        <p>Solution: Use CSS to style text that needs visual emphasis but isn't a true heading. Reserve heading elements (h1-h6) only for actual section headings that represent the document structure. If you need text to look like a heading for visual design, use CSS classes to achieve the desired appearance.</p>
+        <div class="code-example">
+            <pre>
+.styled-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+            </pre>
+        </div>
+    </section>
+
+
+</body>
+</html>

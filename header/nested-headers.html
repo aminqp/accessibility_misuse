@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Nested Header Elements</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Header Examples</a>
+    </div>
+
+    <h1>Issue: Nested Header Elements</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 4: Nested header elements</div>
+        <header>
+            <h2>Main Header</h2>
+            <header>
+                <h3>Sub Header</h3>
+            </header>
+        </header>
+        <p>Problem: Nesting header elements is inappropriate and confuses assistive technologies about the document structure. Header elements should not be nested inside each other as it creates an unclear hierarchy that can be difficult for screen reader users to navigate.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h2>Main Header</h2>
+            <div class="sub-header">
+                <h3>Sub Header</h3>
+            </div>
+        </header>
+        <p>Solution: If you need to include subheadings within a header element, use appropriate heading levels (h1-h6) wrapped in regular divs or other appropriate elements instead of nesting header elements. This maintains a clear document structure while still allowing for visual organization of headings.</p>
+        <p>Alternatively, you can use a sectioning element to properly separate content:</p>
+        <div class="code-example">
+            <pre>
+<!-- Another approach with sectioning -->
+&lt;header&gt;
+    &lt;h2&gt;Main Header&lt;/h2&gt;
+&lt;/header&gt;
+&lt;section&gt;
+    &lt;header&gt;
+        &lt;h3&gt;Sub Section Header&lt;/h3&gt;
+    &lt;/header&gt;
+    &lt;p&gt;Section content...&lt;/p&gt;
+&lt;/section&gt;
+            </pre>
+        </div>
+    </section>
+
+
+</body>
+</html>

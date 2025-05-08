@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Multiple Unlabeled Nav Elements</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Nav Examples</a>
+    </div>
+
+    <h1>Issue: Multiple Unlabeled Nav Elements</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 2: Multiple unlabeled nav elements</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav>
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <nav>
+            <ul class="menu">
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Archive</a></li>
+                <li><a href="#">Tags</a></li>
+            </ul>
+        </nav>
+        <footer>
+            <nav>
+                <ul class="menu">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </footer>
+        <p>Problem: Multiple nav elements without ARIA labels make it difficult for screen reader users to distinguish between different navigation regions. Users can't tell the purpose of each navigation area.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+            <nav aria-label="Primary navigation">
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <p>Main content goes here...</p>
+        </main>
+        <nav aria-label="Blog navigation">
+            <ul class="menu">
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Archive</a></li>
+                <li><a href="#">Tags</a></li>
+            </ul>
+        </nav>
+        <footer>
+            <nav aria-label="Footer navigation">
+                <ul class="menu">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </footer>
+        <p>Solution: Add descriptive aria-label attributes to each nav element to help screen reader users understand the purpose of each navigation region.</p>
+    </section>
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Multiple Main Elements on a Page</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Main Examples</a>
+    </div>
+
+    <h1>Issue: Multiple Main Elements on a Page</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 1: Multiple main elements on a page</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <h2>First Main Content Area</h2>
+            <p>This is the main content of the first section.</p>
+        </main>
+        <main>
+            <h2>Second Main Content Area</h2>
+            <p>This is the main content of the second section.</p>
+        </main>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Problem: According to HTML5 specifications, there should be only one <code>&lt;main&gt;</code> element per page. Multiple <code>&lt;main&gt;</code> elements confuse screen readers about what constitutes the primary content of the page.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <h2>Main Content Area</h2>
+            <p>This is the main content of the page.</p>
+
+            <section>
+                <h3>First Section</h3>
+                <p>This content was previously in a separate main element.</p>
+            </section>
+
+            <section>
+                <h3>Second Section</h3>
+                <p>This content was previously in a separate main element.</p>
+            </section>
+        </main>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Solution: Combine all primary content into a single <code>&lt;main&gt;</code> element and use <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, or other appropriate elements to organize content within the main element.</p>
+    </section>
+
+    <section>
+        <h2>Why This Matters</h2>
+        <p>The HTML5 specification states that the <code>&lt;main&gt;</code> element represents the main content of the <code>&lt;body&gt;</code> of a document or application. The main content area consists of content that is directly related to or expands upon the central topic of a document or central functionality of an application.</p>
+
+        <p>Multiple <code>&lt;main&gt;</code> elements create several issues:</p>
+        <ul>
+            <li><strong>Screen Reader Confusion</strong>: Users of assistive technologies cannot easily determine which "main" content is the primary content of the page.</li>
+            <li><strong>Navigation Issues</strong>: Many screen readers allow users to quickly navigate to the main content using shortcuts. With multiple main elements, the user might land on the wrong content section.</li>
+            <li><strong>Validation Errors</strong>: HTML validators will flag pages with multiple <code>&lt;main&gt;</code> elements as having errors.</li>
+            <li><strong>Semantic Inaccuracy</strong>: By definition, a page can only have one "main" content area. Multiple main elements create a logical contradiction.</li>
+        </ul>
+    </section>
+
+
+</body>
+</html>

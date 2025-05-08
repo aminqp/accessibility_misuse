@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Missing Main Element Entirely</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Main Examples</a>
+    </div>
+
+    <h1>Issue: Missing Main Element Entirely</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 7: Missing main element entirely</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <div>
+            <h2>Primary Content</h2>
+            <p>This is the primary content of the page but it's not wrapped in a main element.</p>
+            <article>
+                <h3>Article Title</h3>
+                <p>Article content...</p>
+            </article>
+        </div>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Problem: Without a <code>&lt;main&gt;</code> element, screen reader users cannot easily jump to the main content of the page, making navigation more difficult. The <code>&lt;main&gt;</code> element provides an important landmark for accessibility.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+            <a href="#main-content" class="skip-link">Skip to main content</a>
+        </header>
+        <main id="main-content" tabindex="-1">
+            <h2>Primary Content</h2>
+            <p>This is the primary content of the page now properly wrapped in a main element.</p>
+            <article>
+                <h3>Article Title</h3>
+                <p>Article content...</p>
+            </article>
+        </main>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Solution: Add a <code>&lt;main&gt;</code> element that wraps the primary content of the page, and include a skip link in the header to allow keyboard users to navigate directly to the main content.</p>
+    </section>
+
+    <section>
+        <h2>Why the Main Element Is Essential</h2>
+        <p>The <code>&lt;main&gt;</code> element serves several important functions that are crucial for accessibility:</p>
+
+        <h3>Landmark Navigation</h3>
+        <p>Screen reader users often navigate pages by landmarks. The main landmark is a critical target that allows them to jump directly to the primary content, skipping navigation and other repetitive elements.</p>
+
+        <h3>Screen Reader Shortcuts</h3>
+        <p>Many screen readers provide keyboard shortcuts to navigate directly to the main content:</p>
+        <ul>
+            <li>NVDA: Insert + M</li>
+            <li>JAWS: R (in landmark navigation mode)</li>
+            <li>VoiceOver: Control + Option + M (on macOS)</li>
+        </ul>
+
+        <h3>Semantic Structure</h3>
+        <p>The <code>&lt;main&gt;</code> element creates a clear semantic structure for the document. This helps both users and automated tools understand the organization of the content.</p>
+
+        <h3>Skip Links</h3>
+        <p>The <code>&lt;main&gt;</code> element provides a logical target for skip links, which are especially important for keyboard users who would otherwise need to tab through all navigation items before reaching the content.</p>
+
+        <h3>Automated Testing</h3>
+        <p>Many accessibility testing tools check for the presence of a main element as part of their automated tests. Missing this element can result in failing accessibility checks.</p>
+    </section>
+
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue: Main Element with Role That Overrides Native Semantics</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+    <div class="example-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Main Examples</a>
+    </div>
+
+    <h1>Issue: Main Element with Role That Overrides Native Semantics</h1>
+
+    <section class="example bad">
+        <div class="example-title">Issue 6: Main element with role that overrides native semantics</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main role="complementary">
+            <h2>Main Content</h2>
+            <p>This is supposed to be the main content but has a conflicting role.</p>
+        </main>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Problem: Applying a different ARIA role ('complementary', which is equivalent to an aside) to the main element creates conflicting semantics. Assistive technologies will announce this as complementary content rather than main content.</p>
+    </section>
+
+    <section class="example good">
+        <div class="example-title">Correct Implementation</div>
+        <header>
+            <h1>Website Title</h1>
+        </header>
+        <main>
+            <h2>Main Content</h2>
+            <p>This is the main content with its correct implicit role="main".</p>
+        </main>
+        <aside>
+            <h2>Related Content</h2>
+            <p>This is complementary content correctly placed in an aside element.</p>
+        </aside>
+        <footer>
+            <p>Footer content</p>
+        </footer>
+        <p>Solution: Allow the <code>&lt;main&gt;</code> element to use its native role="main" implicit role, and use the appropriate semantic elements like <code>&lt;aside&gt;</code> for complementary content.</p>
+    </section>
+
+    <section>
+        <h2>Understanding HTML Semantics and ARIA Roles</h2>
+
+        <h3>Implicit Roles vs. Explicit Roles</h3>
+        <p>HTML5 semantic elements have built-in implicit ARIA roles:</p>
+        <ul>
+            <li><code>&lt;main&gt;</code> → implicit role="main"</li>
+            <li><code>&lt;nav&gt;</code> → implicit role="navigation"</li>
+            <li><code>&lt;aside&gt;</code> → implicit role="complementary"</li>
+            <li><code>&lt;header&gt;</code> → implicit role="banner" (when in the &lt;body&gt; context)</li>
+            <li><code>&lt;footer&gt;</code> → implicit role="contentinfo" (when in the &lt;body&gt; context)</li>
+        </ul>
+
+        <h3>When Role Attributes Are Unnecessary</h3>
+        <pre><code>&lt;!-- Redundant (implicit role is already "main") --&gt;
+&lt;main role="main"&gt;...&lt;/main&gt;
+
+&lt;!-- Redundant (implicit role is already "navigation") --&gt;
+&lt;nav role="navigation"&gt;...&lt;/nav&gt;</code></pre>
+
+        <h3>When Role Attributes Are Harmful</h3>
+        <pre><code>&lt;!-- Harmful (conflicts with implicit role "main") --&gt;
+&lt;main role="complementary"&gt;...&lt;/main&gt;
+
+&lt;!-- Harmful (conflicts with implicit role "navigation") --&gt;
+&lt;nav role="banner"&gt;...&lt;/nav&gt;</code></pre>
+
+        <h3>The First Rule of ARIA</h3>
+        <p>The Web Accessibility Initiative (WAI) defines the "First Rule of ARIA Use" as:</p>
+        <blockquote>
+            "If you can use a native HTML element or attribute with the semantics and behavior you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so."
+        </blockquote>
+
+        <h3>Using ARIA to Enhance Semantics (When Appropriate)</h3>
+        <p>There are legitimate cases where ARIA can enhance semantics without conflict:</p>
+        <pre><code>&lt;!-- Adding a label to a navigation landmark --&gt;
+&lt;nav aria-label="Primary navigation"&gt;...&lt;/nav&gt;
+
+&lt;!-- Indicating the current page in navigation --&gt;
+&lt;a href="/" aria-current="page"&gt;Home&lt;/a&gt;</code></pre>
+    </section>
+
+
+</body>
+</html>
